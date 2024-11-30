@@ -1,4 +1,12 @@
+
+using Microsoft.EntityFrameworkCore;
+using WebApplication1.Data;
+
 var builder = WebApplication.CreateBuilder(args);
+
+// Configuracion de la conexion sql ser local mssqllocal
+builder.Services.AddDbContext<AplicationDBContext>(options =>
+            options.UseSqlServer(builder.Configuration.GetConnectionString("ConexionSql")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
